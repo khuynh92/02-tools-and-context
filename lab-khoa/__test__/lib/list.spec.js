@@ -78,7 +78,8 @@ describe('List Module', () => {
     newList.push(5);
     newList.push(10);
     let expected = newList.map(element => element*2);
-    let actual = `{0: 10, '1': 20, length: 2}`
+    let actual = {0: 10, '1': 20, length: 2};
+    
     expect(expected).toEqual(actual);
   });
 
