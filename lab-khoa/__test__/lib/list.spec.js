@@ -78,8 +78,7 @@ describe('List Module', () => {
     newList.push(5);
     newList.push(10);
     let expected = newList.map(element => element*2);
-    let actual = {0: 10, '1': 20, length: 2};
-    
+    let actual = {'0': 10, '1': 20, length: 2};
     expect(expected).toEqual(actual);
   });
 
@@ -89,11 +88,59 @@ describe('List Module', () => {
     newList.push(10);
     let multList = newList.map(element => element*2);
 
-    
     expect(multList[1]).toEqual(20);
   });
-  
 
+  it('map() should not change the original array', () => {
+    let newList = new List();
+    newList.push(5);
+    newList.push(10);
+    newList.map(element => element*2);
+    expect(newList[1]).toEqual(10);
+  });
 
   
+  it ('filter() should return an error message if argument is not a function', () => {
+    let newList = new List();
+    expect(newList.filter('hello')).toEqual('error, hello is not a function');
+  });
+
+  it('filter() should apply a function to every element of a list, if the statement returns true, then add it to a new array.', () => {
+
+    let newList = new List();
+    newList.push(5);
+    newList.push(10);
+    newList.push(15);
+
+    let expected = newList.filter(number => number > 9);
+    let actual = { '0': 10, '1': 15, length: 2};
+
+    expect(expected).toEqual(actual);
+  });
+
+  it('filter() should return an empty list if no results pass as true', () => {
+    let newList = new List();
+    newList.push(5);
+    newList.push(10);
+    newList.push(15);
+
+    let expected = newList.filter(number => number > 21);
+    let actual = {length: 0};
+
+    expect(expected).toEqual(actual);
+  });
+
+  it('filter() should not change the original array', () => {
+    let newList = new List();
+    newList.push('Hello');
+    newList.push('Darcy');
+    newList.filter(element => typeof element === 'number');
+    expect(newList[1]).toEqual('Darcy');
+  });
+
+  it('reduce() should return an error message if a function is not passed in as an argument', () => {
+
+    let newList = new List();
+    expect(newList.reduce('JB is a great teacher!')).toEqual('error, JB is a great teacher! is not a function');
+  });
 });

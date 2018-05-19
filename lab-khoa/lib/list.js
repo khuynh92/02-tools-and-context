@@ -31,15 +31,42 @@ class List {
   }
   
   map(func) {
+
+    let mapArray = new List();
+
     if(typeof func !== 'function') return `error, ${func} is not a function`;
     else {
       for(let i = 0; i < this.length; i++) {
-        this[i] = func(this[i]);
+        mapArray[i] = func(this[i]);
+        mapArray.length++;
       }
-      console.log(this);
-      return this;
+      return mapArray;
     }
   }
+
+  filter(func) {
+
+    let filterArray = new List();
+    let j = 0;
+    if(typeof func !== 'function') return `error, ${func} is not a function`;
+    else {
+      for(let i = 0 ; i < this.length; i++) {
+        if(func(this[i]) === true) {
+          filterArray[j] = this[i];
+          filterArray.length++;
+          j++;
+        }
+      }
+      return filterArray;
+    }
+  }
+
+  reduce(func, intValue = this[0]) {
+    if(typeof func !== 'function') return `error, ${func} is not a function`;
+  }
+  // else {
+
+  // }
 }
 
 module.exports = List;

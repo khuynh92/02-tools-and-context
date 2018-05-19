@@ -14,11 +14,20 @@ the values that are being exported from the list.js module is a class with the m
  * forEach()
     * has an arity of one
     * data-type is a function
-    * expected behavior for valid use is to apply the inputted function acress all elements in the list. Return undefined
+    * expected behavior for valid use is to apply the inputted function across all elements in the list. Return undefined
     * expected behavior for invalid use is to return an error message for when data-type is not a function
 * map()
     * has an arity of one
     * data-type is a function
-    * expected behavior for valid use is to apply the inputted function acress all elements in the list. Return modified list
+    * expected behavior for valid use is to apply the inputted function across all elements in the list. Return modified list
     * expected behavior for invalid use is to return an error message for when data-type is not a function.
-  
+* filter()
+    * has an arity of one
+    * data-type is a function
+    * expected behavior for valid use is to apply the inputted function across all elements in the list. If the function returns true for that element, add it to a new list. Return modified list. If no elements return true when used in the function, return an empty array.
+    * expected behavior for invalid use is to return an error message for when data-type is not a function.
+* reduce()
+    * has an arity of one
+    * data-type is a function
+    * expected behavior for valid use is to apply the inputted function across all elements in the list. each value is added to the first index of the list, or the supplied initial value(optional argument). the return value is the sum of all elemented combined together 
+    * expected behavior for invalid use is to return an error message for when data-type is not a function.
