@@ -25,7 +25,6 @@ describe('List Module', () => {
   });
 
   it('push() should return the updated length of the list', () => {
-    console.log(new List([1,2,3,4,5]));
     let newList = new List();
     newList.push('foo');
     newList.push('bar');
@@ -76,7 +75,7 @@ describe('List Module', () => {
   it('forEach() should return undefined when a function is passed through', () => {
     let newList = new List();
     newList.push(1);
-    let expected = newList.forEach(element => console.log(element));
+    let expected = newList.forEach(element => element/2);
 
     expect(expected).toBeUndefined();
   });
@@ -158,6 +157,7 @@ describe('List Module', () => {
   });
 
   it('filter() should not change the original array', () => {
+
     let newList = new List();
     newList.push('Hello');
     newList.push('Darcy');
@@ -176,7 +176,6 @@ describe('List Module', () => {
   it('reduce() should start with the first index of the list if no second parameter is given', () => {
     
     let newList = new List([5, 10, 30]);
-    console.log(newList.toArray());
     let expected = newList.reduce((a, b) => a + b);
     
     expect(expected).toEqual(45);
