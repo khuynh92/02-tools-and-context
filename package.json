@@ -1,0 +1,32 @@
+{
+  "name": "02-tools-and-content",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) 02: Tools and Context ======",
+  "main": "wallaby.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__test__"
+  },
+  "scripts": {
+    "lint": "eslint **/*.js",
+    "test": "jest --verbose --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^4.19.1",
+    "jest": "^22.4.3"
+  },
+  "devDependencies": {
+    "jest-cli": "^22.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khuynh92/02-tools-and-context.git"
+  },
+  "bugs": {
+    "url": "https://github.com/khuynh92/02-tools-and-context/issues"
+  },
+  "homepage": "https://github.com/khuynh92/02-tools-and-context#readme"
+}
