@@ -1,10 +1,31 @@
 const List = require('../../lib/list');
 
 describe('List Module', () => {
+
+  it('toArray() index should be the same as List', () => {
+    let array = [1,2,3,4,5];
+    let newList = new List(array);
+    
+    expect(newList.length).toEqual(array.length);
+
+  });
   
+  it('toArray() should take the list and create an array', () => {
+    let newList = new List([1,2,3,4,5]);
+    
+    expect(newList.toArray()).toEqual([1,2,3,4,5]);
+
+  });
+
+  it('toArray() should take the list and create an array', () => {
+    let newList = new List([1]);
+    
+    expect(newList).toEqual({'0': 1, length: 1});
+
+  });
 
   it('push() should return the updated length of the list', () => {
-
+    console.log(new List([1,2,3,4,5]));
     let newList = new List();
     newList.push('foo');
     newList.push('bar');
@@ -39,15 +60,16 @@ describe('List Module', () => {
   it('pop() should remove the last element of the list', () => {
 
     let newList = new List();
-    newList.push('foo');
-    newList.push('bar');
+    newList.push('soda');
+    newList.push('pop');
     newList.pop();
 
-    expect(newList[newList.length - 1]).toEqual('foo');
+    expect(newList[newList.length - 1]).toEqual('soda');
   });
 
   it('forEach() should return an error message if argument is not a function', () => {
     let newList =  new List();
+
     expect(newList.forEach('hello')).toEqual(`error, hello is not a function`);
   });
 
@@ -55,6 +77,7 @@ describe('List Module', () => {
     let newList = new List();
     newList.push(1);
     let expected = newList.forEach(element => console.log(element));
+
     expect(expected).toBeUndefined();
   });
 
@@ -70,6 +93,7 @@ describe('List Module', () => {
 
   it('map() should return an error message if argument is not a function', () => {
     let newList = new List();
+
     expect(newList.map('hello')).toEqual('error, hello is not a function');
   });
 
@@ -79,6 +103,7 @@ describe('List Module', () => {
     newList.push(10);
     let expected = newList.map(element => element*2);
     let actual = {'0': 10, '1': 20, length: 2};
+
     expect(expected).toEqual(actual);
   });
 
@@ -96,12 +121,14 @@ describe('List Module', () => {
     newList.push(5);
     newList.push(10);
     newList.map(element => element*2);
+
     expect(newList[1]).toEqual(10);
   });
 
   
   it ('filter() should return an error message if argument is not a function', () => {
     let newList = new List();
+
     expect(newList.filter('hello')).toEqual('error, hello is not a function');
   });
 
@@ -135,12 +162,37 @@ describe('List Module', () => {
     newList.push('Hello');
     newList.push('Darcy');
     newList.filter(element => typeof element === 'number');
+
     expect(newList[1]).toEqual('Darcy');
   });
 
   it('reduce() should return an error message if a function is not passed in as an argument', () => {
 
     let newList = new List();
+
     expect(newList.reduce('JB is a great teacher!')).toEqual('error, JB is a great teacher! is not a function');
+  });
+
+  it('reduce() should start with the first index of the list if no second parameter is given', () => {
+    
+    let newList = new List([5, 10, 30]);
+    console.log(newList.toArray());
+    let expected = newList.reduce((a, b) => a + b);
+    
+    expect(expected).toEqual(45);
+  });
+
+  it('reduce() should allow an optional argument', () => {
+
+    let newList = new List([100, 200, 300]);
+
+    expect(newList.reduce((a, b) => a + b, 100)).toEqual(700);
+  });
+
+  it('reduce() should allow an strings', () => {
+
+    let newList = new List(['laurel', 'yanny']);
+
+    expect(newList.reduce((a, b) => a + ' and ' + b)).toEqual('laurel and yanny');
   });
 });
